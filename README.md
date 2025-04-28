@@ -1,12 +1,12 @@
-# 🫀 Wearable EKG Senior Project
+# 🫀 Wearable ECG Senior Project
 
-Welcome to the **Wearable EKG** project!  
-This project focuses on designing and building a lightweight, real-time, and portable EKG (Electrocardiogram) monitoring device. 💻📈
+Welcome to the **Wearable ECG** project!  
+This project focuses on designing and building a lightweight, real-time, and portable ECG (Electrocardiogram) monitoring device. 💻📈
 
 ---
 
 ## 📋 Project Overview
-- 🩺 **Purpose**: To develop a wearable device capable of monitoring heart activity and transmitting EKG signals for analysis.
+- 🩺 **Purpose**: To develop a wearable device capable of monitoring heart activity and transmitting ECG signals for analysis.
 - 🧑‍🔬 **Target Audience**: Medical professionals, patients, researchers, and health-conscious users.
 - 📡 **Features**:
   - Real-time heart signal monitoring ⚡
@@ -17,11 +17,11 @@ This project focuses on designing and building a lightweight, real-time, and por
 ---
 
 ## 🛠️ Technologies Used
-- 🧠 **Microcontroller**: ESP32 / Arduino Nano 33 BLE Sense
-- 📊 **Sensors**: AD8232 EKG sensor module
-- 🌐 **Communication**: Bluetooth Low Energy (BLE) / Wi-Fi
-- 🖥️ **Software**: Python, MATLAB, C++
-- 📱 **App Interface**: Android Studio (Java/Kotlin) or React Native
+- 🧠 **Microcontroller**: Raspberry Pi Zero 2 W
+- 📊 **Sensors**: Proprietary PCB EKG sensor module
+- 🌐 **Communication**: SSH / Wi-Fi
+- 🖥️ **Software**: Python
+- 📱 **App Interface**: SSH, XQuartz
 - 🛡️ **Enclosure**: 3D printed lightweight casing
 
 ---
@@ -29,18 +29,17 @@ This project focuses on designing and building a lightweight, real-time, and por
 ## 🔥 Key Features
 - 🧬 Accurate signal acquisition and filtering
 - 📈 Real-time waveform visualization
-- 🛡️ Secure and private data handling
-- 🏃‍♂️ Comfortable for continuous daily wear
+- 🛡️ Secure and private data handling (In Development)
+- 🏃‍♂️ Comfortable for continuous daily wear (In Development)
 - 🕒 Long battery life with fast charging
 
 ---
 
 ## 🚀 Getting Started
-1. 🔌 Connect the EKG sensor to the microcontroller.
-2. 🖥️ Upload the firmware using Arduino IDE or PlatformIO.
-3. 📱 Install the mobile app or desktop software.
-4. 📡 Pair the device via BLE.
-5. 📊 Start monitoring your EKG signals!
+1. 🔌 Power on the EKG device via the switch.
+2. 🖥️ Access the microcontroller via SSH.
+3. 📡 Run the python program.
+4. 📊 Start monitoring your EKG signals!
 
 ---
 
@@ -68,9 +67,9 @@ This project focuses on designing and building a lightweight, real-time, and por
 ---
 
 ## 🏆 Goals
-- 🎯 Accurate readings within ±2% error margin
-- 🎯 Battery life > 24 hours on a single charge
-- 🎯 Secure wireless transmission with encryption
+- 🎯 Accurate readings maintaining P-Wave 
+- 🎯 Battery Powered
+- 🎯 Remote monitored
 
 ---
 
@@ -83,8 +82,8 @@ This project focuses on designing and building a lightweight, real-time, and por
 
 ## 📬 Contact
 Got questions? Reach out! 📧  
-- 📫 Email: yourname@example.com
-- 🌐 LinkedIn: [Your LinkedIn]
+- 📫 Email: **********@*****.***
+- 🌐 LinkedIn: ******* ********
 
 ---
 
