@@ -82,7 +82,7 @@ This project focuses on designing and building a lightweight, real-time, and por
 
 ## 📬 Contact
 Got questions? Reach out! 📧  
-- 📫 Email: **********@****
+- 📫 Email: **************
 - 🌐 LinkedIn: ******* ********
 
 ---
