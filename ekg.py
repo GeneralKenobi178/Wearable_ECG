@@ -80,8 +80,7 @@ class pgCharts(Page):
 
         AI_ECG = adc.read_voltage(1)
         #AI_piezo = adc.read_voltage(5)
-    
-        
+
 
         iCounter+=1 
         #time
@@ -98,9 +97,9 @@ class pgCharts(Page):
             #self.ySide_2.append(self.tpiezo[i]) # for piezo
 
 
-        #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1)
+        self.fig.add_subplot(111).plot(self.xSide,self.ySide_1)
         #for ECG and piezo
-        self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
+        #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
      
         
         self.fig.suptitle("ECGDC Voltage Real Time Charts")
@@ -163,11 +162,11 @@ class pgCloud(Page):
 
             self.xSide.append(self.tTimer[i])
             #self.ySide_1.append(self.tECG[i])
-            self.ySide_2.append(self.tpiezo[i]) # for piezo
+            self.ySide_1.append(self.tpiezo[i]) # for piezo
 
-        #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1)
+        self.fig.add_subplot(111).plot(self.xSide,self.ySide_1)
         #for ECG and piezo
-        self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
+        #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
      
         
         self.fig.suptitle("ECGDC Voltage Real Time Charts")
