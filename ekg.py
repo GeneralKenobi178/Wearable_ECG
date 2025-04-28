@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-
 #Python3 Library
+#------------LIBRARY---------------------------------------
 from ADCPi import ADCPi
 import tkinter as tk
 import time
@@ -13,6 +13,9 @@ from matplotlib.backends.backend_tkagg import (
 from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
 
+#-------------------LIBRARY--------------------------------
+
+#-------------------GLOBAL VARIABLES----------------------
 #ADC addresses and setup
 adc = ADCPi(0x6A, 0x6B, 12)
 adc.set_conversion_mode(1)
@@ -25,16 +28,24 @@ mpu6050 = mpu6050.mpu6050(0x68)
 iCounter  = 0
 
 #definition Analog Input Var. 
-AI_5VpowerSupply = 0
-AI_24VpowerSupply = 0
+AI_ECG = 0 #blue line
 
+AI_piezo = 0 #orange line
+
+#-------------------END GLOBALS----------------------------
+
+#-------------------FUNCTIONS--------------------------------
+
+#--------CLASS: Page-----------------
+# This is a base class for all pages in the application.
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
     def show(self):
         self.lift()
+#-------------------END OF CLASS: PAGE---------------------
 
-
+#-------------------CLASS: pgCharts------------------------
 class pgCharts(Page):
    def __init__(self, *args, **kwargs):
 
@@ -53,8 +64,8 @@ class pgCharts(Page):
 
        #verilerin kayit edilmesi
        self.tTimer = [] #time Counter
-       self.t5V = [] #5V 
-       self.t24V = [] #24V
+       self.tECG = [] #ECG 
+       self.tpiezo = [] #piezo
 
        self.xSide = []
        self.ySide_1 = []
@@ -64,13 +75,12 @@ class pgCharts(Page):
    def fsave_to_Charts(self):
         #saving sensor data
         global iCounter
-        global AI_5VpowerSupply
-        global AI_24VpowerSupply
+        global AI_ECG
+        global AI_piezo
 
-        AI_5VpowerSupply = adc.read_voltage(1)
-        AI_24VpowerSupply = adc.read_voltage(5)
-        # AI_5VpowerSupply = rpi_dig_vol_converter(rpi_readAI(6))
-        # AI_24VpowerSupply = rpi_dig_vol_converter(rpi_readAI(7))
+        AI_ECG = adc.read_voltage(1)
+        #AI_piezo = adc.read_voltage(5)
+    
         
 
         iCounter+=1 
@@ -78,27 +88,28 @@ class pgCharts(Page):
      
       
         self.tTimer.append(iCounter)
-        self.t5V.append(AI_5VpowerSupply)
-        self.t24V.append(AI_24VpowerSupply)
+        self.tECG.append(AI_ECG)
+        #self.tpiezo.append(AI_piezo)
 
         for i in range(len(self.tTimer)):
 
             self.xSide.append(self.tTimer[i])
-            self.ySide_1.append(self.t5V[i])
-            self.ySide_2.append(self.t24V[i]) # for 24V
+            self.ySide_1.append(self.tECG[i])
+            #self.ySide_2.append(self.tpiezo[i]) # for piezo
 
 
         #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1)
-        #for 5V and 24V
+        #for ECG and piezo
         self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
      
         
-        self.fig.suptitle("5VDC Voltage Real Time Charts")
+        self.fig.suptitle("ECGDC Voltage Real Time Charts")
         self.canvas.draw()
         self.fig.clf()
         #verilerin temizlenmesi
         self.tTimer.clear()
-        self.t5V.clear()
+        self.tECG.clear()
+#-------------------END CLASS: pgCharts------------------------
 
 
 #--------------------PGCLOUD-------------------------------------------
@@ -121,8 +132,8 @@ class pgCloud(Page):
 
        #verilerin kayit edilmesi
        self.tTimer = [] #time Counter
-       self.t5V = [] #5V 
-       self.t24V = [] #24V
+       self.tECG = [] #ECG 
+       self.tpiezo = [] #piezo
 
        self.xSide = []
        self.ySide_1 = []
@@ -131,40 +142,40 @@ class pgCloud(Page):
    def fsave_to_Charts(self):
         #saving sensor data
         global iCounter
-        global AI_5VpowerSupply
-        global AI_24VpowerSupply
+        global AI_ECG
+        global AI_piezo
 
-        AI_5VpowerSupply = adc.read_voltage(1)
-        AI_24VpowerSupply = adc.read_voltage(5)
-        # AI_5VpowerSupply = rpi_dig_vol_converter(rpi_readAI(6))
-        # AI_24VpowerSupply = rpi_dig_vol_converter(rpi_readAI(7))
+        #AI_ECG = adc.read_voltage(1)
+        AI_piezo = adc.read_voltage(5)
+        # AI_ECG = rpi_dig_vol_converter(rpi_readAI(6))
+        # AI_piezo = rpi_dig_vol_converter(rpi_readAI(7))
         
 
         iCounter+=1 
         #time
     
         self.tTimer.append(iCounter)
-        self.t5V.append(AI_5VpowerSupply)
-        self.t24V.append(AI_24VpowerSupply)
+        #self.tECG.append(AI_ECG)
+        self.tpiezo.append(AI_piezo)
 
 
         for i in range(len(self.tTimer)):
 
             self.xSide.append(self.tTimer[i])
-            self.ySide_1.append(self.t5V[i])
-            self.ySide_2.append(self.t24V[i]) # for 24V
+            #self.ySide_1.append(self.tECG[i])
+            self.ySide_2.append(self.tpiezo[i]) # for piezo
 
         #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1)
-        #for 5V and 24V
+        #for ECG and piezo
         self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
      
         
-        self.fig.suptitle("5VDC Voltage Real Time Charts")
+        self.fig.suptitle("ECGDC Voltage Real Time Charts")
         self.canvas.draw()
         self.fig.clf()
         #verilerin temizlenmesi
         self.tTimer.clear()
-        self.t5V.clear()
+        self.tECG.clear()
 #------------------------END OF PGCLOUD-------------------------------------------
 
 #-------------------------MAINVIEW--------------------------------------
@@ -251,7 +262,8 @@ while True:
     # Wait for 1 second
     time.sleep(1)
 '''
-    
+#-------------------END OF FUNCTIONS----------------------------
+
 #--------------MAIN FUNCTION-------------------
 if __name__ == "__main__":
     root = tk.Tk()
