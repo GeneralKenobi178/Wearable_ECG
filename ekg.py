@@ -106,7 +106,7 @@ class pgCharts(Page):
         self.fig.suptitle("ECGDC Voltage Real Time Charts")
         self.canvas.draw()
         self.fig.clf()
-        #verilerin temizlenmesi
+        #----------------------
         self.tTimer.clear()
         self.tECG.clear()
 #-------------------END CLASS: pgCharts------------------------
@@ -172,9 +172,10 @@ class pgCloud(Page):
         self.fig.suptitle("ECGDC Voltage Real Time Charts")
         self.canvas.draw()
         self.fig.clf()
-        #verilerin temizlenmesi
+        #-----------------------
         self.tTimer.clear()
-        self.tECG.clear()
+        #self.tECG.clear()
+        self.tpiezo.clear()
 #------------------------END OF PGCLOUD-------------------------------------------
 
 #-------------------------MAINVIEW--------------------------------------
