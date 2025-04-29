@@ -76,7 +76,7 @@ class pgCharts(Page):
         #saving sensor data
         global iCounter
         global AI_ECG
-        global AI_piezo
+        #global AI_piezo
 
         AI_ECG = adc.read_voltage(1)
         #AI_piezo = adc.read_voltage(5)
@@ -140,17 +140,16 @@ class pgCloud(Page):
 
    def fsave_to_Charts(self):
         #saving sensor data
-        global iCounter
-        global AI_ECG
+        global jCounter
+        #global AI_ECG
         global AI_piezo
 
         #AI_ECG = adc.read_voltage(1)
         AI_piezo = adc.read_voltage(5)
         # AI_ECG = rpi_dig_vol_converter(rpi_readAI(6))
         # AI_piezo = rpi_dig_vol_converter(rpi_readAI(7))
-        
 
-        iCounter+=1 
+        jCounter+=1 
         #time
     
         self.tTimer.append(iCounter)
@@ -225,8 +224,6 @@ class MainView(tk.Frame):
 
  
     def fEmbeddedCall(self):
-
-        #anlık grafiklerin gosterilmesi
         self.pCharts.fsave_to_Charts()
         self.pCloud.fsave_to_Charts()
         self.after(1000,self.fEmbeddedCall)
