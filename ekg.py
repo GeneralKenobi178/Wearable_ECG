@@ -53,7 +53,7 @@ class pgCharts(Page):
        Page.__init__(self, *args, **kwargs)
 
        self.fig = Figure(figsize=(5, 4), dpi=100)
-       self.fig.patch.set_facecolor('grey')
+       self.fig.patch.set_facecolor('#d3d3d3')
 
        self.canvas = FigureCanvasTkAgg(self.fig, master=self)  # A tk.DrawingArea.
        self.canvas.draw()
@@ -103,7 +103,7 @@ class pgCharts(Page):
         #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
      
         
-        self.fig.suptitle("ECGDC Voltage Real Time Charts")
+        self.fig.suptitle("ECG Monitor Real Time Chart")
         self.canvas.draw()
         self.fig.clf()
         #----------------------
@@ -120,7 +120,7 @@ class pgCloud(Page):
        Page.__init__(self, *args, **kwargs)
 
        self.fig = Figure(figsize=(5, 4), dpi=100)
-       self.fig.patch.set_facecolor('blue')
+       self.fig.patch.set_facecolor('#008ECC')
 
        self.canvas = FigureCanvasTkAgg(self.fig, master=self)  # A tk.DrawingArea.
        self.canvas.draw()
@@ -169,7 +169,7 @@ class pgCloud(Page):
         #self.fig.add_subplot(111).plot(self.xSide,self.ySide_1,self.ySide_2)
      
         
-        self.fig.suptitle("ECGDC Voltage Real Time Charts")
+        self.fig.suptitle("Respiratory Monitor Real Time Chart")
         self.canvas.draw()
         self.fig.clf()
         #-----------------------
