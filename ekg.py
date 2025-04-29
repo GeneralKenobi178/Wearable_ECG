@@ -26,6 +26,7 @@ mpu6050 = mpu6050.mpu6050(0x68)
 #GLOBAL VARIABLE
 #xAxis
 iCounter  = 0
+jCounter  = 0
 
 #definition Analog Input Var. 
 AI_ECG = 0 #blue line
